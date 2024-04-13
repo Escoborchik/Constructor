@@ -13,7 +13,8 @@ namespace Constructor.Repository
 
         public void Add(Master item)
         {
-            throw new NotImplementedException();
+            _dbContext.Masters.Add(item);
+            _dbContext.SaveChanges();
         }
 
         public Master Get(int id)
@@ -23,7 +24,7 @@ namespace Constructor.Repository
 
         public IEnumerable<Master> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Masters.ToList();
         }
     }
 }
