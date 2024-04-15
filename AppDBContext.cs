@@ -7,8 +7,10 @@ namespace Constructor
     {
         public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
         {
-            
+            Database.EnsureCreated();
         }
+
+       
 
         public DbSet<Client> Clients { get; set; }
         public DbSet<Master> Masters { get; set; }
