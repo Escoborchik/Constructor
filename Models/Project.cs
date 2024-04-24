@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Constructor.Models
 {
@@ -10,13 +11,14 @@ namespace Constructor.Models
 
         public string Description { get; set; }
 
+        public string Content { get; set; }
+
         public int Master_Id { get; set; }
+        
 
         [ForeignKey(nameof(Master_Id))]
         public Master Master { get; set; }
-
-        public List<Page> Pages { get; set; }
-
+       
         public List<Deal> Deals { get; set; }
     }
 }

@@ -13,17 +13,24 @@ namespace Constructor.Repository
 
         public void Add(Project item)
         {
-            throw new NotImplementedException();
+            _dbContext.Projects.Add(item);
+            _dbContext.SaveChanges();
         }
 
         public Project Get(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Projects.FirstOrDefault(p => p.Master_Id == id);
         }        
 
         public IEnumerable<Project> GetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public void Edit(Project item) 
+        {
+            _dbContext.Projects.Update(item);
+            _dbContext.SaveChanges();
         }
 
         

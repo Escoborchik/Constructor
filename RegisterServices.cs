@@ -14,8 +14,7 @@ namespace Constructor
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
             services.AddScoped<MasterRepository>();
-            services.AddScoped<ClientRepository>();
-            services.AddScoped<PageRepository>();
+            services.AddScoped<ClientRepository>();            
             services.AddScoped<DealRepository>();
             services.AddScoped<ProjectRepository>();
         }
