@@ -13,7 +13,8 @@ namespace Constructor.Repository
 
         public void Add(Deal item)
         {
-            throw new NotImplementedException();
+            _dbContext.Deals.Add(item);
+            _dbContext.SaveChanges();
         }
 
         public Deal Get(int id)
@@ -23,7 +24,7 @@ namespace Constructor.Repository
 
         public IEnumerable<Deal> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Deals;
         }
     }
 }

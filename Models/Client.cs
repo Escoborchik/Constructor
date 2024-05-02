@@ -8,6 +8,6 @@
 
         public string Email { get; set; }
 
-        public List<Deal> Deals { get; set; }
+        public List<Deal> Deals { get; set; } = new List<Deal>();
     }
 }

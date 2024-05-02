@@ -19,6 +19,6 @@ namespace Constructor.Models
         [ForeignKey(nameof(Master_Id))]
         public Master Master { get; set; }
        
-        public List<Deal> Deals { get; set; }
+        public List<Deal> Deals { get; set; } = new List<Deal>();
     }
 }

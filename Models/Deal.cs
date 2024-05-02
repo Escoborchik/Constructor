@@ -10,6 +10,8 @@ namespace Constructor.Models
 
         public string Status { get; set; }
 
+        public string ProductName { get; set; }
+
         public int Project_Id { get; set; }
 
         [ForeignKey(nameof(Project_Id))]

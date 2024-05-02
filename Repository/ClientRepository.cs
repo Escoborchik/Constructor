@@ -1,4 +1,5 @@
 ﻿using Constructor.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Constructor.Repository
 {
@@ -13,7 +14,8 @@ namespace Constructor.Repository
 
         public void Add(Client item)
         {
-            throw new NotImplementedException();
+            _dbContext.Clients.Add(item);
+            _dbContext.SaveChanges();
         }
 
         public Client Get(int id)
@@ -23,7 +25,7 @@ namespace Constructor.Repository
 
         public IEnumerable<Client> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Clients.Include(p => p.Deals);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Constructor.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Constructor.Repository
 {
@@ -19,8 +20,13 @@ namespace Constructor.Repository
 
         public Project Get(int id)
         {
-            return _dbContext.Projects.FirstOrDefault(p => p.Master_Id == id);
-        }        
+            return _dbContext.Projects.Include(p => p.Deals).FirstOrDefault(p => p.Master_Id == id);
+        }
+
+        public Project GetProject(int id)
+        {
+            return _dbContext.Projects.Include(p=>p.Deals).FirstOrDefault(p => p.Id == id);
+        }
 
         public IEnumerable<Project> GetAll()
         {
