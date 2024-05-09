@@ -14,8 +14,8 @@ namespace Constructor.Models
         public string Content { get; set; }
 
         public int Master_Id { get; set; }
-        
 
+        [JsonIgnore]
         [ForeignKey(nameof(Master_Id))]
         public Master Master { get; set; }
        

@@ -2,7 +2,7 @@
 {
     public class AnswerAutentic
     {
-        public int Client_id { get; set; }
+        public int MasterId { get; set; }
 
         public string Username { get; set; }
     }

@@ -19,25 +19,25 @@ namespace Constructor.Controllers
             {
                 if (master.Email.Equals(dataUser.Email) && master.Password.Equals(dataUser.Password))
                 {
-                    answer.Client_id = master.Id;
+                    answer.MasterId = master.Id;
                     answer.Username = master.Username;                   
                     break;
                 }
                 else if (master.Email.Equals(dataUser.Email))
                 {
-                    answer.Client_id = -2;
+                    answer.MasterId = -2;
                 }
                 else
                 {
-                    answer.Client_id = -1;
+                    answer.MasterId = -1;
                 }
             }
 
-            if (answer.Client_id == -1)
+            if (answer.MasterId == -1)
             {
                 return new StatusCodeResult(404);
             }
-            else if (answer.Client_id == -2)
+            else if (answer.MasterId == -2)
             {
                 return new StatusCodeResult(401);
             }
