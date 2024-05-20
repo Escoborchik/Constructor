@@ -23,7 +23,16 @@ namespace Constructor.Controllers
             }
             
             var project = projectrepos.GetProject(dealdto.Project_Id);
-            var newDeal = new Deal() { Amount = dealdto.Amount, Client = client, ProductName = dealdto.ProductName, Project = project };                       
+            var newDeal = new Deal() { 
+                Amount = dealdto.Amount,
+                Client = client,
+                ProductsName = dealdto.ProductName,
+                Project = project,
+                Comment = dealdto.Comment,
+                Phone = dealdto.Phone,
+                Status = "Создан",
+                Adress = dealdto.Adress,
+            };                       
             dealrepository.Add(newDeal);
 
             return Ok();
@@ -32,10 +41,10 @@ namespace Constructor.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetDeal([FromQuery] int Project_id, [FromServices] ProjectRepository projectrepos)
+        public IActionResult GetDeal([FromQuery] int Project_id, [FromServices] DealRepository dealrepos)
         {
-            var answer = projectrepos.GetProject(Project_id);
-            return Ok(answer.Deals);
+            var answer = dealrepos.GetAll(Project_id);
+            return Ok(answer);
         }
     }
 }

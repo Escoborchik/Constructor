@@ -10,7 +10,13 @@ namespace Constructor.Models
 
         public string Status { get; set; }
 
-        public string ProductName { get; set; }
+        public string ProductsName { get; set; }
+
+        public string Comment { get; set; }
+
+        public string Phone {  get; set; }
+
+        public string Adress { get; set; }
 
         public int Project_Id { get; set; }
 

@@ -26,7 +26,7 @@ namespace Constructor.Controllers
             };
             projectrepos.Add(project);
 
-            return Ok();
+            return Ok(project.Id);
              
 
         }

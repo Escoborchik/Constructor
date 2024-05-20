@@ -1,4 +1,5 @@
 ﻿using Constructor.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Constructor.Repository
 {
@@ -22,9 +23,14 @@ namespace Constructor.Repository
             throw new NotImplementedException();
         }
 
+        public IEnumerable<Deal> GetAll(int projectId)
+        {
+            return _dbContext.Deals.Where(d=> d.Project_Id == projectId).Include(p => p.Client);
+        }
+
         public IEnumerable<Deal> GetAll()
         {
-            return _dbContext.Deals;
+            throw new NotImplementedException();
         }
     }
 }
