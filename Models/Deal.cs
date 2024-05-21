@@ -18,6 +18,8 @@ namespace Constructor.Models
 
         public string Adress { get; set; }
 
+        public DateTime Created { get; set; }
+
         public int Project_Id { get; set; }
 
         [ForeignKey(nameof(Project_Id))]
