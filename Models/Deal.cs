@@ -18,7 +18,7 @@ namespace Constructor.Models
 
         public string Adress { get; set; }
 
-        public string Created { get; set; }
+        public DateTime Created { get; set; }
 
         public int Project_Id { get; set; }
 

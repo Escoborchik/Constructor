@@ -34,7 +34,7 @@ namespace Constructor.Controllers
                 Phone = dealdto.Phone,
                 Status = "Создан",
                 Adress = dealdto.Adress,
-                Created = $"{date.Year} {date.Month} {date.Day}"
+                Created = DateTime.Now,
             };                       
             dealrepository.Add(newDeal);
 
