@@ -11,10 +11,12 @@ namespace Constructor.Controllers
     [Route("api/[controller]")]
     public class DealController : Controller
     {
+
         [HttpPost]
         public IActionResult MakeDeal([FromBody] DealDTO dealdto, [FromServices] ProjectRepository projectrepos,
              [FromServices] ClientRepository clientrepos, [FromServices] DealRepository dealrepository)
         {
+            var date = new DateOnly();
             var client = clientrepos.GetAll().FirstOrDefault(c => c.Email == dealdto.ClientEmail);
             if (client == null)
             {
@@ -32,7 +34,7 @@ namespace Constructor.Controllers
                 Phone = dealdto.Phone,
                 Status = "Создан",
                 Adress = dealdto.Adress,
-                Created = new DateTime().Date
+                Created = $"{date.Year} {date.Month} {date.Day}"
             };                       
             dealrepository.Add(newDeal);
 
