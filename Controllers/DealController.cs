@@ -16,7 +16,7 @@ namespace Constructor.Controllers
         public IActionResult MakeDeal([FromBody] DealDTO dealdto, [FromServices] ProjectRepository projectrepos,
              [FromServices] ClientRepository clientrepos, [FromServices] DealRepository dealrepository)
         {
-            var date = new DateOnly();
+             
             var client = clientrepos.GetAll().FirstOrDefault(c => c.Email == dealdto.ClientEmail);
             if (client == null)
             {
@@ -35,6 +35,10 @@ namespace Constructor.Controllers
                 Status = "Создан",
                 Adress = dealdto.Adress,
                 Created = DateTime.Now,
+                IsArchive = false,
+                IsProblem = false,
+                Reason = "",
+                ReasonComment = ""
             };                       
             dealrepository.Add(newDeal);
 
@@ -48,6 +52,27 @@ namespace Constructor.Controllers
         {
             var answer = dealrepos.GetAll(Project_id);
             return Ok(answer);
+        }
+
+        [HttpPatch("Status")]
+        public IActionResult EditStatusDeal([FromBody] StatusDTO statusDTO, [FromServices] DealRepository dealrepos)
+        {
+            var res = dealrepos.Get(statusDTO.DealId);
+            res.Status = statusDTO.Status;
+            dealrepos.Update(res);
+            return Ok();
+        }
+
+        [HttpPatch("Archive")]
+        public IActionResult EditArchiveDeal([FromBody] ArchiveDTO archiveDTO, [FromServices] DealRepository dealrepos)
+        {
+            var res = dealrepos.Get(archiveDTO.DealId);
+            res.IsArchive = true;
+            res.IsProblem = archiveDTO.IsProblem; 
+            res.Reason = archiveDTO.Reason;
+            res.ReasonComment = archiveDTO.ReasonComment;
+            dealrepos.Update(res);
+            return Ok();
         }
     }
 }

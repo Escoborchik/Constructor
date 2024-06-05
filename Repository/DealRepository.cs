@@ -18,15 +18,28 @@ namespace Constructor.Repository
             _dbContext.SaveChanges();
         }
 
+        public void Update(Deal item)
+        {
+            _dbContext.Deals.Update(item);
+            _dbContext.SaveChanges();
+        }
+
         public Deal Get(int id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Deals.Where(d => d.Id == id).Include(p => p.Client).FirstOrDefault();
         }
 
         public IEnumerable<Deal> GetAll(int projectId)
         {
             return _dbContext.Deals.Where(d=> d.Project_Id == projectId).Include(p => p.Client);
         }
+
+        public IEnumerable<Deal> GetAllArchive(int projectId)
+        {
+            return _dbContext.Deals.Where(d => d.Project_Id == projectId && d.IsArchive == true).Include(p => p.Client);
+        }
+
+
 
         public IEnumerable<Deal> GetAll()
         {

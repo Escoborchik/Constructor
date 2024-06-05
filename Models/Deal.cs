@@ -20,6 +20,14 @@ namespace Constructor.Models
 
         public DateTime Created { get; set; }
 
+        public bool IsArchive { get; set; }
+
+        public bool IsProblem { get; set; }
+
+        public string Reason {  get; set; }
+
+        public string ReasonComment { get; set; }
+
         public int Project_Id { get; set; }
 
         [ForeignKey(nameof(Project_Id))]
