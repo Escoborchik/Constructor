@@ -54,6 +54,13 @@ namespace Constructor.Controllers
             return Ok(answer);
         }
 
+        [HttpGet("Status")]
+        public IActionResult GetDealWithStatus([FromQuery] int Project_id, [FromQuery] string status, [FromServices] DealRepository dealrepos)
+        {
+            var answer = dealrepos.GetAll(Project_id).Where(d => d.Status == status);
+            return Ok(answer);
+        }
+
         [HttpPatch("Status")]
         public IActionResult EditStatusDeal([FromBody] StatusDTO statusDTO, [FromServices] DealRepository dealrepos)
         {

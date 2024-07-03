@@ -18,6 +18,7 @@ namespace Constructor.Controllers
             answer.ProblemCount = dealrepos.GetAllArchive(Project_id).Where(d=> d.IsProblem == true).Count();
             foreach (var deal in deals)
             {
+                answer.Profit += deal.Amount;
                 var products = deal.ProductsName.Split(' ');
                 foreach(var product in products)
                 {
@@ -30,6 +31,7 @@ namespace Constructor.Controllers
                         answer.GoodSales[product] = 1;
                     }
                 }
+                answer.Sale = answer.GoodSales.First(p => p.Value == answer.GoodSales.Max(p => p.Value)).Key;
                 
             }            
             return Ok(answer);
